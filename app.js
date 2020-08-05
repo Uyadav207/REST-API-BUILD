@@ -43,7 +43,7 @@ app.post("/articles", (req,res) => {
     content: req.body.content
   })
 
-// Saving
+// SAVING REQUEST
   newArticle.save((err)=>{
     if(!err){
       res.send("successfully Added new article")
@@ -53,7 +53,16 @@ app.post("/articles", (req,res) => {
   });
 })
 
-
+// DELETE REQUEST
+app.delete("/articles", (req,res)=> {
+  Article.deleteMany((err)=>{
+    if(!err) {
+      res.send("successfully deleted All the articles")
+    } else {
+      console.log(err);
+    }
+  })
+})
 
 app.listen(3000, () => {
   console.log("server started at PORT 3000");
